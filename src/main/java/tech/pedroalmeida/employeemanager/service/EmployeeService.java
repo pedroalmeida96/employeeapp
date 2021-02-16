@@ -37,10 +37,8 @@ public class EmployeeService {
         return employeeRepo.save(employee);
     }
 
-    public void removeEmployee(Long id) {
+    public void deleteEmployee(Long id) {
         employeeRepo.deleteEmployeeById(id);
-
-
     }
 
 

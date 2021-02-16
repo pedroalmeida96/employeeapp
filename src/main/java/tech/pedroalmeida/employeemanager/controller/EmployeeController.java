@@ -3,6 +3,7 @@ package tech.pedroalmeida.employeemanager.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import tech.pedroalmeida.employeemanager.model.Employee;
 import tech.pedroalmeida.employeemanager.service.EmployeeService;
@@ -43,8 +44,9 @@ public class EmployeeController {
     }
 
     @DeleteMapping(Mappings.DELETE_EMPLOYEE)
+    @Transactional
     public ResponseEntity<?> removeEmployee(@PathVariable("id") Long id) {
-        employeeService.removeEmployee(id);
+        employeeService.deleteEmployee(id);
         return new ResponseEntity(HttpStatus.OK);
     }
 }
